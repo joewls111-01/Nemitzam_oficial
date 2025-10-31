@@ -1,0 +1,77 @@
+import { useState, useEffect } from 'react';
+import { supabase, type Project } from '../../backend/database/supabase';
+import { Plus, Edit2, Trash2, Save, X, Loader2, Settings, Lock, Package } from 'lucide-react';
+
+interface SiteConfig {
+  site_name: string;
+  site_icon: string;
+  social_facebook: string;
+  social_instagram: string;
+  social_twitter: string;
+  social_whatsapp: string;
+  social_email: string;
+}
+
+interface Category {
+  id: string;
+  name: string;
+  slug: string;
+  display_order: number;
+}
+
+const ADMIN_PASSWORD = '12345678';
+
+export function Admin() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [password, setPassword] = useState('');
+  const [activeTab, setActiveTab] = useState<'projects' | 'config' | 'categories'>('projects');
+
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [isAdding, setIsAdding] = useState(false);
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
+    image_url: '',
+    category: 'madera',
+    order_index: 0,
+  });
+
+  const [siteConfig, setSiteConfig] = useState<SiteConfig>({
+    site_name: 'LaserArt',
+    site_icon: '⚡',
+    social_facebook: '',
+    social_instagram: '',
+    social_twitter: '',
+    social_whatsapp: '',
+    social_email: '',
+  });
+
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [editingCategoryId, setEditingCategoryId] = useState<string | null>(null);
+  const [isAddingCategory, setIsAddingCategory] = useState(false);
+  const [categoryFormData, setCategoryFormData] = useState({
+    name: '',
+    slug: '',
+    display_order: 0,
+  });
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      loadProjects();
+      loadSiteConfig();
+      loadCategories();
+    }
+  }, [isAuthenticated]);
+
+  async function handleLogin(e: React.FormEvent) {
+    e.preventDefault();
+    if (password === ADMIN_PASSWORD) {
+      setIsAuthenticated(true);
+      setPassword('');
+    } else {
+      alert('Contraseña incorrecta');
+      setPassword('');
+    }
+  }
