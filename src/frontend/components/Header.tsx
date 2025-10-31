@@ -15,8 +15,8 @@ interface SiteConfig {
 export function Header({ onNavigate }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [siteConfig, setSiteConfig] = useState<SiteConfig>({
-    site_name: 'LaserArt',
-    site_icon: '⚡',
+    site_name: 'Nemtzam',
+    site_icon: '',
     site_logo_url: '',
   });
 
@@ -49,8 +49,8 @@ export function Header({ onNavigate }: HeaderProps) {
       if (error) throw error;
 
       const config: SiteConfig = {
-        site_name: 'LaserArt',
-        site_icon: '⚡',
+        site_name: 'Nemitzam',
+        site_icon: '',
         site_logo_url: '',
       };
 

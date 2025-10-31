@@ -38,8 +38,8 @@ export function Admin() {
     order_index: 0,
   });
   const [siteConfig, setSiteConfig] = useState<SiteConfig>({
-    site_name: 'LaserArt',
-    site_icon: '⚡',
+    site_name: 'Nemitzam',
+    site_icon: '',
     site_logo_url: '',
     social_facebook: '',
     social_instagram: '',
@@ -93,7 +93,7 @@ export function Admin() {
       const { data, error } = await supabase.from('site_config').select('*');
       if (error) throw error;
       const config: SiteConfig = {
-        site_name: 'LaserArt', site_icon: '⚡', site_logo_url: '', social_facebook: '', social_instagram: '',
+        site_name: 'LaserArt', site_icon: '.i.', site_logo_url: '', social_facebook: '', social_instagram: '',
         social_twitter: '', social_whatsapp: '', social_email: '',
       };
       data?.forEach((item) => {

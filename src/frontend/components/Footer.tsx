@@ -5,6 +5,7 @@ import { supabase } from '../../backend/database/supabase';
 interface SiteConfig {
   site_name: string;
   site_icon: string;
+  site_logo_url: string;
   social_facebook: string;
   social_instagram: string;
   social_twitter: string;
@@ -14,8 +15,9 @@ interface SiteConfig {
 
 export function Footer() {
   const [siteConfig, setSiteConfig] = useState<SiteConfig>({
-    site_name: 'LaserArt',
+    site_name: 'Nemitzam',
     site_icon: '�',
+    site_logo_url: '',
     social_facebook: '',
     social_instagram: '',
     social_twitter: '',
@@ -46,7 +48,7 @@ export function Footer() {
       if (error) throw error;
 
       const config: SiteConfig = {
-        site_name: 'LaserArt',
+        site_name: 'Nemitzam',
         site_icon: '�',
         social_facebook: '',
         social_instagram: '',
@@ -56,6 +58,7 @@ export function Footer() {
       };
 
       data?.forEach((item) => {
+        if (item.key === 'site_logo_url') config.site_logo_url = item.value;
         if (item.key in config) {
           config[item.key as keyof SiteConfig] = item.value;
         }
@@ -79,7 +82,11 @@ export function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center gap-6">
           <div className="flex items-center gap-2">
-            <span className="text-2xl">{siteConfig.site_icon}</span>
+            <img
+              src={siteConfig.site_logo_url}
+              alt={`${siteConfig.site_name} logo`}
+              className="w-8 h-8"
+            />
             <span className="text-lg font-semibold text-gray-900">{siteConfig.site_name}</span>
           </div>
 
@@ -118,7 +125,7 @@ export function Footer() {
           <div className="flex items-center gap-2 text-gray-500 text-sm">
             <span>Hecho con</span>
             <Heart className="w-4 h-4 text-red-500 fill-red-500" />
-            <span>� 2024 {siteConfig.site_name}. Todos los derechos reservados.</span>
+            <span> 2024 {siteConfig.site_name}. Todos los derechos reservados.</span>
           </div>
         </div>
       </div>
