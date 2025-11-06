@@ -50,6 +50,7 @@ export function Footer() {
       const config: SiteConfig = {
         site_name: 'Nemitzam',
         site_icon: '�',
+        site_logo_url: '�',
         social_facebook: '',
         social_instagram: '',
         social_twitter: '',
