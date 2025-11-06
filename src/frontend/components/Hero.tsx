@@ -85,12 +85,14 @@ export function Hero({ onNavigate }: HeroProps) {
       <div className="container mx-auto px-6 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
           <div className="space-y-6">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight">
-              Grabado Láser de Precisión
-            </h1>
-
+            <h1 className="text-5xl md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
+            Espacio donde convergen Arte, Ingenería y Tecnología.
+              <span className="block text-base text-gray-500 italic font-serif -mt-1">
+                  
+              </span>
+              </h1>
             <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-              Transformamos tus ideas en obras de arte personalizadas.
+              Damos forma, luz y vida a través del diseño, la tecnología & la creatividad
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">

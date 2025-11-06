@@ -125,7 +125,7 @@ export function Footer() {
           <div className="flex items-center gap-2 text-gray-500 text-sm">
             <span>Hecho con</span>
             <Heart className="w-4 h-4 text-red-500 fill-red-500" />
-            <span> 2024 {siteConfig.site_name}. Todos los derechos reservados.</span>
+            <span> 2025 {siteConfig.site_name}. Todos los derechos reservados.</span>
           </div>
         </div>
       </div>

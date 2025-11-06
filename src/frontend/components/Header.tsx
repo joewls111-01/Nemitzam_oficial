@@ -31,7 +31,7 @@ export function Header({ onNavigate }: HeaderProps) {
           site_icon: customEvent.detail.site_icon,
           site_logo_url: customEvent.detail.site_logo_url || '',
         });
-        document.title = `${customEvent.detail.site_name} - Grabado Láser de Precisión`;
+        document.title = `${customEvent.detail.site_name} - Estudio Creativo`;
       }
     };
 
@@ -61,7 +61,7 @@ export function Header({ onNavigate }: HeaderProps) {
       });
 
       setSiteConfig(config);
-      document.title = `${config.site_name} - Grabado Láser de Precisión`;
+      document.title = `${config.site_name} - Estudio Creativo`;
     } catch (error) {
       console.error('Error loading site config:', error);
     }
@@ -83,19 +83,33 @@ export function Header({ onNavigate }: HeaderProps) {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
       <div className="container mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 cursor-pointer" onClick={() => handleNavClick('hero')}>
-            {siteConfig.site_logo_url ? (
-              siteConfig.site_logo_url.startsWith('http') ? (
-                <img src={siteConfig.site_logo_url} alt={siteConfig.site_name} className="h-8 w-auto object-contain" />
-              ) : (
-                <span className="text-2xl">{siteConfig.site_logo_url}</span>
-              )
-            ) : siteConfig.site_icon ? (
-              <span className="text-2xl">{siteConfig.site_icon}</span>
-            ) : null}
-            <span className="text-xl font-bold text-gray-900">{siteConfig.site_name}</span>
-          </div>
+        <div className="flex items-center gap-2 cursor-pointer" onClick={() => handleNavClick('hero')}>
+          {siteConfig.site_logo_url ? (
+            siteConfig.site_logo_url.startsWith('http') ? (
+              <img
+                src={siteConfig.site_logo_url}
+                alt={siteConfig.site_name}
+                className="h-14 w-auto object-contain"
+              />
+            ) : (
+              <span className="text-2xl">{siteConfig.site_logo_url}</span>
+            )
+          ) : siteConfig.site_icon ? (
+            <span className="text-2xl">{siteConfig.site_icon}</span>
+          ) : null}
 
+          {/* Agrupamos el nombre y el subtítulo */}
+          <div className="flex flex-col leading-tight">
+            <span className="text-2xl font-bold text-gray-900">
+              {siteConfig.site_name}
+            </span>
+            <span className="text-sm text-gray-500 font-semibold -mt-1">
+            Taller Creativo.
+            </span>
+          </div>
+        </div>
+
+            
           <nav className="hidden md:flex items-center gap-8">
             {menuItems.map((item) => (
               <button
