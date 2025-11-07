@@ -86,7 +86,7 @@ export function Footer() {
             <img
               src={siteConfig.site_logo_url}
               alt={`${siteConfig.site_name} logo`}
-              className="w-8 h-8"
+              className="h-14 w-auto object-contain"
             />
             <span className="text-lg font-semibold text-gray-900">{siteConfig.site_name}</span>
           </div>
@@ -103,7 +103,7 @@ export function Footer() {
                     className="p-2 text-gray-600 hover:text-gray-900 transition-colors"
                     aria-label={social.label}
                   >
-                    <social.icon className="w-5 h-5" />
+                    <social.icon className="h-10 w-auto object-contain" />
                   </a>
                 ) : null
               )}
@@ -125,7 +125,7 @@ export function Footer() {
 
           <div className="flex items-center gap-2 text-gray-500 text-sm">
             <span>Hecho con</span>
-            <Heart className="w-4 h-4 text-red-500 fill-red-500" />
+            <Heart className="w-4 h-4 text-blue-500 fill-blue-500" />
             <span> 2025 {siteConfig.site_name}. Todos los derechos reservados.</span>
           </div>
         </div>
